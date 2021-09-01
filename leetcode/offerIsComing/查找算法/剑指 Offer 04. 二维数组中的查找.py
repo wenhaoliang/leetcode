@@ -83,5 +83,4 @@ if __name__ == "__main__":
         [18, 21, 23, 26, 30]
     ]
     target = 5
-    nums = []
     print(A.findNumberIn2DArray(nums, target))
