@@ -25,6 +25,22 @@ class Solution:
         return ' '
 
 
+class Solution1:
+    def firstUniqChar(self, s: str) -> str:
+        nums = {}
+        for i in s:
+            if i not in nums:
+                nums[i] = 1
+            else:
+                nums[i] += 1
+        print('1', nums)
+        for i in nums:
+            if nums[i] == 1:
+                return i
+
+        return ' '
+
+
 if __name__ == "__main__":
     """
     s = s = "abaccdeff"
@@ -32,5 +48,7 @@ if __name__ == "__main__":
     """
     A = Solution()
     s = "abaccdeff"
-
+    print(A.firstUniqChar(s))
+    A = Solution1()
+    s = "abaccdeff"
     print(A.firstUniqChar(s))

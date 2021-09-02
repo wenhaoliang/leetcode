@@ -1,5 +1,6 @@
 """
-请定义一个队列并实现函数 max_value 得到队列里的最大值，要求函数max_value、push_back 和 pop_front 的均摊时间复杂度都是O(1)。
+请定义一个队列并实现函数 max_value 得到队列里的最大值，要求函数max_value、
+push_back 和 pop_front 的均摊时间复杂度都是O(1)。
 若队列为空，pop_front 和 max_value需要返回 -1
 示例 1：
 输入:
@@ -13,33 +14,34 @@
 输出:[null,-1,-1]
 链接：https://leetcode-cn.com/problems/dui-lie-de-zui-da-zhi-lcof
 """
+import collections
 
 
 class MaxQueue1:
     """2个数组"""
 
     def __init__(self):
-        self.queue = []
-        self.max_stack = []
+        self.deque = collections.deque()
+        self.maxStack = collections.deque()
 
     def max_value(self) -> int:
-        if self.max_stack:
-            return self.max_stack[0]
+        if self.maxStack:
+            return self.maxStack[0]
         else:
             return -1
 
     def push_back(self, value: int) -> None:
-        self.queue.append(value)
-        while self.max_stack and self.max_stack[-1] < value:
-            self.max_stack.pop()
-        self.max_stack.append(value)
+        self.deque.append(value)
+        while self.maxStack and self.maxStack[-1] < value:
+            self.maxStack.pop()
+        self.maxStack.append(value)
 
     def pop_front(self) -> int:
-        if not self.queue:
+        if not self.deque:
             return -1
-        ans = self.queue.pop(0)
-        if ans == self.max_stack[0]:
-            self.max_stack.pop(0)
+        ans = self.deque.popleft()
+        if ans == self.maxStack[0]:
+            self.maxStack.popleft()
         return ans
 
 
@@ -51,25 +53,28 @@ class MaxQueue2:
     """
 
     def __init__(self):
-        self.queue = []
-        self.maxStack = []
+        self.deque = collections.deque()
+        self.maxStack = collections.deque()
 
     def max_value(self) -> int:
-        if not self.maxStack:
-            return -1
-        else:
+        if self.maxStack:
             return self.maxStack[0]
+        else:
+            return -1
 
     def push_back(self, value: int) -> None:
-        self.queue.append(value)
+        self.deque.append(value)
         while self.maxStack and self.maxStack[-1] < value:
             self.maxStack.pop()
         self.maxStack.append(value)
 
     def pop_front(self) -> int:
-        ans = self.queue.pop(0)
+        if not self.deque:
+            return -1
+
+        ans = self.deque.popleft()
         if ans == self.maxStack[0]:
-            self.maxStack.pop(0)
+            self.maxStack.popleft()
         return ans
 
 
@@ -87,8 +92,10 @@ if __name__ == "__main__":
     a.push_back(4)
     a.push_back(5)
 
-    a.max_value()
-    a.pop_front()
-    a.pop_front()
-    a.pop_front()
-    a.max_value()
+    print(a.max_value())
+    print(a.pop_front())
+    print(a.pop_front())
+    print(a.pop_front())
+    print(a.max_value())
+
+    print()

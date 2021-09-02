@@ -20,8 +20,26 @@ def binary_chop(alist, data):
     return False
 
 
-if __name__ == "__main__":
-    nums = [5, 7, 7, 8, 8, 10]
-    target = 11
+def bilibiliBinary(nums, target):
+    """
 
-    print(binary_chop(nums, target))
+
+    """
+    n = len(nums)
+    left, right = -1, n
+
+    while left + 1 != right:
+        mid = (left + right) // 2
+        if nums[mid] <= target:
+            left = mid
+        else:
+            right = mid
+
+    if 0 <= left < n:
+        return True
+    else:
+        return False
+
+
+if __name__ == "__main__":
+    print(bilibiliBinary([5, 7, 7, 8, 8, 10], 11))

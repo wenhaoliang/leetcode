@@ -39,6 +39,19 @@ class Solution1:
         return i
 
 
+class Solution2:
+    def missingNumber(self, nums: List[int]) -> int:
+        left, right = 0, len(nums) - 1
+        while left <= right:
+
+            mid = (left + right) // 2
+            if nums[mid] == mid:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return left
+
+
 if __name__ == "__main__":
     """
     输入: [0,1,3]
@@ -47,6 +60,9 @@ if __name__ == "__main__":
     """
     A = Solution1()
     nums = [0, 1, 2, 3, 5]
-    target = 8
+
+    print(A.missingNumber(nums))
+    A = Solution2()
+    nums = [0, 1, 2, 3, 5]
 
     print(A.missingNumber(nums))

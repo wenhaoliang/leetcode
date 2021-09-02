@@ -21,7 +21,7 @@ class Solution:
                 # 这里是因为numbers[m]不可能是旋转点
                 i = m + 1
             elif numbers[m] < numbers[j]:
-                # 这里是因为numbers[m]也可能是旋转店
+                # 这里是因为numbers[m]也可能是旋转点
                 j = m
             else:
                 # return min(numbers[i:j])
@@ -31,16 +31,20 @@ class Solution:
 
 class Solution1:
     def minArray(self, numbers: [int]) -> int:
-        i, j = 0, len(numbers) - 1
-        while i < j:
-            mid = (i + j) // 2
-            if numbers[mid] > numbers[j]:
-                i = mid + 1
-            elif numbers[mid] < numbers[j]:
-                j = mid
+        left, right = 0, len(numbers) - 1
+        while left < right:
+
+            mid = (left + right) // 2
+            if numbers[left] == numbers[right]:
+                left += 1
+                continue
+
+            if numbers[mid] > numbers[right]:
+                left = mid + 1
             else:
-                j -= 1
-        return numbers[i]
+                right = mid
+
+        return numbers[left]
 
 
 if __name__ == "__main__":

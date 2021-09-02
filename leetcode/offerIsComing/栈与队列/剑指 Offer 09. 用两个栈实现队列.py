@@ -33,6 +33,17 @@ class CQueue:
         return self.B.pop()
 
 
+# class CQueue1:
+#
+#     def __init__(self):
+#
+#
+#     def appendTail(self, value: int) -> None:
+#
+#
+#     def deleteHead(self) -> int:
+#
+
 if __name__ == "__main__":
     """
     ["CQueue", "appendTail", "deleteHead", "deleteHead"]
@@ -41,14 +52,12 @@ if __name__ == "__main__":
     一个队列具备的两个功能分别由两个栈来完成：栈A实现入队功能，栈B实现出队功能
     """
     obj = CQueue()
-    obj.appendTail(23)
-    obj.appendTail(24)
-    obj.appendTail(25)
+    obj.appendTail(1)
+    obj.appendTail(2)
+    obj.appendTail(3)
     parm = obj.deleteHead()
-    obj.appendTail(23)
-    # obj.appendTail(23)
-    # obj.appendTail(23)
-    # param_2 = obj.deleteHead()
+    obj.appendTail(4)
+    obj.deleteHead()
 
     print('obj.A', obj.A)
     print('obj.B', obj.B)
