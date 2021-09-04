@@ -23,8 +23,6 @@ class Solution:
         def my_rob(nums):
             n = len(nums)
             dp = [0] * (n + 1)
-            # dp[n] 表示房子为n时最高收益
-            # dp[n] = max(dp[n-1], dp[n-2] + nums[n])
             dp[1] = nums[0]
             for i in range(2, n + 1):
                 dp[i] = max(dp[i - 1], dp[i - 2] + nums[i - 1])
